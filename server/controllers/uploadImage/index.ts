@@ -1,4 +1,6 @@
-const uploadImage = async (req, res) => {
+import {RequestHandler, Request, Response, NextFunction} from 'express-serve-static-core';
+
+ const uploadImage: RequestHandler = async (req: Request, res: Response) => {
   try {
     if (!req.files) {
       res.send({
@@ -6,8 +8,9 @@ const uploadImage = async (req, res) => {
         message: '请选择图片'
       });
     } else {
-      let avatar = req.files.file;
-      let uploadTime = new Date().getTime();
+      let avatar: any = req.files.file;
+      let uploadTime: number = new Date().getTime();
+
       avatar.mv(`./images/${uploadTime}-${avatar.name}`);
 
       res.send({
@@ -27,6 +30,4 @@ const uploadImage = async (req, res) => {
   }
 }
 
-module.exports = {
-  uploadImage
-};
+export default uploadImage
