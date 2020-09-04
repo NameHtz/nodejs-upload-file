@@ -2,9 +2,7 @@ import React from 'react';
 import UploadImage from "./pages/uploadImage";
 import './App.css';
 
-import 'antd/dist/antd.css';
-
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <UploadImage/>
